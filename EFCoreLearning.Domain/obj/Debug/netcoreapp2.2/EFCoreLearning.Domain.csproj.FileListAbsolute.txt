@@ -4,3 +4,6 @@ C:\Users\m.nagaraju\source\LeraningRepo\EFCoreLearning\EFCoreLearning.Domain\obj
 C:\Users\m.nagaraju\source\LeraningRepo\EFCoreLearning\EFCoreLearning.Domain\obj\Debug\netcoreapp2.2\EFCoreLearning.Domain.csproj.CoreCompileInputs.cache
 C:\Users\m.nagaraju\source\LeraningRepo\EFCoreLearning\EFCoreLearning.Domain\obj\Debug\netcoreapp2.2\EFCoreLearning.Domain.AssemblyInfoInputs.cache
 C:\Users\m.nagaraju\source\LeraningRepo\EFCoreLearning\EFCoreLearning.Domain\obj\Debug\netcoreapp2.2\EFCoreLearning.Domain.AssemblyInfo.cs
+C:\Users\m.nagaraju\source\LeraningRepo\EFCoreLearning\EFCoreLearning.Domain\bin\Debug\netcoreapp2.2\EFCoreLearning.Domain.pdb
+C:\Users\m.nagaraju\source\LeraningRepo\EFCoreLearning\EFCoreLearning.Domain\obj\Debug\netcoreapp2.2\EFCoreLearning.Domain.dll
+C:\Users\m.nagaraju\source\LeraningRepo\EFCoreLearning\EFCoreLearning.Domain\obj\Debug\netcoreapp2.2\EFCoreLearning.Domain.pdb
