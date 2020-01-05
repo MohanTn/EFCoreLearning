@@ -21,7 +21,8 @@ PlaceOfBirth VARCHAR(MAX),
 Nationality VARCHAR(MAX),
 AuthorRef INT,
 PRIMARY KEY (AuthorBiographyId),
-FOREIGN KEY (AuthorRef) REFERENCES Authors(AuthorId)
+FOREIGN KEY (AuthorRef) REFERENCES Authors(AuthorId),
+CONSTRAINT Author_Bio UNIQUE (AuthorRef)
 )
 GO
 INSERT INTO AuthorBiographys VALUES (1,'Test Author Bio1','01-01-2020','BLR1','Indian',1)

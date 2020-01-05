@@ -7,8 +7,20 @@ namespace EFCoreLearning.Domain
 {
     public class DatabaseContext : DbContext
     {
+        #region One-To-One Mapping
         public DbSet<Author> Author { get; set; }
-        public DbSet<AuthorBiography> AuthorBiography { get; set; }
+        public DbSet<AuthorBiography> AuthorBiography { get; set; } 
+        #endregion
+
+        #region Family Tree
+        //Family Tree
+        public DbSet<GrandGrandParent> GrandGrandParents { get; set; }
+        public DbSet<GrandParent> GrandParents { get; set; }
+        public DbSet<Parent> Parents { get; set; }
+        public DbSet<Child> Children { get; set; }
+
+        #endregion
+
         public DatabaseContext() : base()
         {
 
@@ -23,14 +35,16 @@ namespace EFCoreLearning.Domain
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //One-One Mapping
+            #region One-To-One Mapping
             modelBuilder.Entity<Author>().ToTable("Authors");
             modelBuilder.Entity<AuthorBiography>().ToTable("AuthorBiographys");
             modelBuilder.Entity<Author>()
                 .HasOne(x => x.Biography)
                 .WithOne(x => x.Author)
                 .HasForeignKey<AuthorBiography>(x => x.AuthorRef);
+            #endregion
 
+            #region One-to-Many Mapping
             //One to Many mapping
             modelBuilder.Entity<Company>().ToTable("Companys");
             modelBuilder.Entity<Employee>().ToTable("Employees");
@@ -48,9 +62,45 @@ namespace EFCoreLearning.Domain
             //.OnDelete(DeleteBehavior.SetNull);
             //.OnDelete(DeleteBehavior.Delete);
 
-            //Many-to-Many Mapping
+            #endregion
 
+            #region Many-to-Many Mapping
+            //Many-to-Many Mapping
+            modelBuilder.Entity<Student>().ToTable("Students");
+            modelBuilder.Entity<Course>().ToTable("Courses");
+            modelBuilder.Entity<StudentCourse>()
+                .HasKey(sc => new { sc.StudentId, sc.CourseId });
+
+            modelBuilder.Entity<StudentCourse>()
+                .HasOne<Student>(x => x.Student)
+                .WithMany(x => x.StudentCourses)
+                .HasForeignKey(x => x.StudentId);
+
+            modelBuilder.Entity<StudentCourse>()
+                .HasOne<Course>(x => x.Course)
+                .WithMany(x => x.StudentCourses)
+                .HasForeignKey(x => x.CourseId);
+            #endregion
+
+            #region Family Tree Mapping
             //GrandParent-Parent-Child
+            modelBuilder.Entity<GrandGrandParent>().ToTable("GrandGrandParents");
+            modelBuilder.Entity<GrandParent>().ToTable("GrandParents");
+            modelBuilder.Entity<Parent>().ToTable("Parents");
+            modelBuilder.Entity<Child>().ToTable("Child");
+
+            modelBuilder.Entity<GrandGrandParent>()
+                .HasMany(x => x.GrandParents)
+                .WithOne(x => x.GrandGrandParent);
+
+            modelBuilder.Entity<GrandParent>()
+                .HasMany(x => x.Parents)
+                .WithOne(x => x.GrandParent);
+
+            modelBuilder.Entity<Parent>()
+                .HasMany(x => x.Children)
+                .WithOne(x => x.Parent); 
+            #endregion
 
             //Lazy loading
 

@@ -23,21 +23,21 @@ namespace EFCoreLearning.Domain
     }
 
     // One-to-One Relationship which do not need mapping
-    public class Student
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public StudentAddress Address { get; set; }
-    }
+    //public class Student
+    //{
+    //    public int Id { get; set; }
+    //    public string Name { get; set; }
+    //    public StudentAddress Address { get; set; }
+    //}
 
-    public class StudentAddress
-    {
-        public int StudentAddressId { get; set; }
-        public string Address { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string Country { get; set; }
-        public int StudentId { get; set; }
-        public Student Student { get; set; }
-    }
+    //public class StudentAddress
+    //{
+    //    public int StudentAddressId { get; set; }
+    //    public string Address { get; set; }
+    //    public string City { get; set; }
+    //    public string State { get; set; }
+    //    public string Country { get; set; }
+    //    public int StudentId { get; set; }
+    //    public Student Student { get; set; }
+    //}
 }
