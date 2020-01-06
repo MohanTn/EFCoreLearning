@@ -84,10 +84,32 @@ namespace EFCoreLearning.Domain
 
             #region Family Tree Mapping
             //GrandParent-Parent-Child
-            modelBuilder.Entity<GrandGrandParent>().ToTable("GrandGrandParents");
-            modelBuilder.Entity<GrandParent>().ToTable("GrandParents");
-            modelBuilder.Entity<Parent>().ToTable("Parents");
-            modelBuilder.Entity<Child>().ToTable("Child");
+            modelBuilder.Entity<GrandGrandParent>(entity =>
+            {
+                entity.ToTable("GrandGrandParents");
+                entity.Property(X => X.GrandGrandParentID).HasColumnName("ID");
+                entity.Property(x => x.GrandGrandParentName).HasColumnName("Name");
+            });
+
+            modelBuilder.Entity<GrandParent>(entity =>
+            {
+                entity.ToTable("GrandParents");
+                entity.HasKey(x => x.GrandParentID);
+                entity.Property(x => x.GrandParentID).HasColumnName("ID");
+                entity.Property(x => x.GrandParentName).HasColumnName("Name");
+            });
+            modelBuilder.Entity<Parent>(entity =>
+            {
+                entity.ToTable("Parents");
+                entity.Property(x => x.ParentID).HasColumnName("ID");
+                entity.Property(x => x.ParentName).HasColumnName("Name");
+            });
+            modelBuilder.Entity<Child>(entity =>
+            {
+                entity.ToTable("Child");
+                entity.Property(x => x.ChildID).HasColumnName("ID");
+                entity.Property(x => x.ChildName).HasColumnName("Name");
+            });
 
             modelBuilder.Entity<GrandGrandParent>()
                 .HasMany(x => x.GrandParents)

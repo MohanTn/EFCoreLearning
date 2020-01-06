@@ -6,8 +6,8 @@ namespace EFCoreLearning.Domain
 {
     public class GrandGrandParent
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
+        public int GrandGrandParentID { get; set; }
+        public string GrandGrandParentName { get; set; }
         public virtual List<GrandParent> GrandParents { get; set; }
 
         public GrandGrandParent()
@@ -18,8 +18,8 @@ namespace EFCoreLearning.Domain
 
     public class GrandParent
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
+        public int GrandParentID { get; set; }
+        public string GrandParentName { get; set; }
         public virtual GrandGrandParent GrandGrandParent { get; set; }
         public virtual List<Parent> Parents { get; set; }
 
@@ -31,8 +31,8 @@ namespace EFCoreLearning.Domain
 
     public class Parent
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
+        public int ParentID { get; set; }
+        public string ParentName { get; set; }
         public virtual GrandParent GrandParent { get; set; }
         public virtual List<Child> Children { get; set; }
 
@@ -44,8 +44,8 @@ namespace EFCoreLearning.Domain
 
     public class Child
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
+        public int ChildID { get; set; }
+        public string ChildName { get; set; }
         public virtual Parent Parent { get; set; }
     }
 }
